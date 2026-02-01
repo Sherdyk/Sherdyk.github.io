@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olena | Dev Journey</title>
+    <title>Personal Page | Olena</title>
     <style>
         :root {
-            --neon-color: #ccff00; /* Кислотний жовто-зелений */
-            --glow-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00, 0 0 40px #ccff00;
+            --neon-color: #ccff00; /* Кислотний неон */
+            --glow-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00;
         }
 
         body, html {
@@ -15,9 +15,8 @@
             padding: 0;
             background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
         }
 
         /* ЕФЕКТ ШУМУ */
@@ -26,7 +25,7 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>');
+            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');
             pointer-events: none;
             z-index: 10;
         }
@@ -34,97 +33,131 @@
         .container {
             max-width: 700px;
             margin: 0 auto;
-            padding: 80px 25px;
+            padding: 60px 20px;
             position: relative;
             z-index: 20;
         }
 
-        /* НЕОНОВЕ ІМ'Я */
-        h1 {
-            font-size: 4rem;
-            color: var(--neon-color);
-            text-shadow: var(--glow-shadow);
-            margin: 0;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
-
+        /* ТЕКСТОВИЙ БЛОК */
         .intro {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            margin: 30px 0;
-            color: #eee;
+            font-size: 1.25rem;
+            margin-bottom: 50px;
+            font-weight: 300;
         }
 
         .highlight {
             color: var(--neon-color);
             text-shadow: 0 0 5px var(--neon-color);
+            font-weight: 600;
         }
 
-        .hobbies {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 3px solid var(--neon-color);
+        /* РОЗДІЛ ПРОЄКТІВ ТА СТАТЕЙ */
+        h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #555;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            margin-top: 60px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #222;
             padding: 20px;
-            margin-bottom: 50px;
-            box-shadow: -5px 0 15px rgba(204, 255, 0, 0.1);
+            transition: 0.3s;
+            text-decoration: none;
+            color: inherit;
         }
 
-        /* НЕОНОВІ КНОПКИ */
+        .card:hover {
+            border-color: var(--neon-color);
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            color: var(--neon-color);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #888;
+            margin: 0;
+        }
+
+        /* СОЦМЕРЕЖІ */
         .socials {
             display: flex;
             gap: 15px;
+            margin-top: 50px;
             flex-wrap: wrap;
         }
 
         .social-link {
-            color: var(--neon-color);
+            color: #fff;
             text-decoration: none;
-            padding: 12px 25px;
-            border: 1px solid var(--neon-color);
-            text-transform: uppercase;
             font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            box-shadow: inset 0 0 5px rgba(204, 255, 0, 0.2), 0 0 5px rgba(204, 255, 0, 0.2);
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--neon-color);
+            padding-bottom: 2px;
+            transition: 0.3s;
         }
 
         .social-link:hover {
-            background: var(--neon-color);
-            color: #000;
-            box-shadow: var(--glow-shadow);
-            transform: scale(1.05);
+            color: var(--neon-color);
+            text-shadow: var(--glow-shadow);
         }
 
         footer {
             margin-top: 80px;
-            color: #444;
+            color: #333;
             font-size: 0.7rem;
-            letter-spacing: 3px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>OLENA</h1>
-    
     <div class="intro">
-        Hi! I'm <span class="highlight">15 years old</span>. I'm focusing on tech and programming to build a strong foundation for my future career. I want to become a <span class="highlight">professional software engineer</span>.
+        Hi! My name is <span class="highlight">Olena</span>. I'm 15 years old and I'm dedicated to developing my skills in technology to pursue a career as a <span class="highlight">software engineer</span>. 
+        I stay active with volleyball, badminton, and basketball. I also enjoy solving the Rubik's cube, playing the guitar, and diving into fascinating books — from sci-fi and detective stories to popular science.
     </div>
 
-    <div class="hobbies">
-        I'm active in sports like <span class="highlight">volleyball, badminton, and basketball</span>. 
-        I can solve the Rubik's Cube, play the guitar, and I'm a huge fan of reading — from gripping sci-fi and detectives to popular science.
+    <h2>Projects & Articles</h2>
+    <div class="grid">
+        <a href="#" class="card">
+            <h3>Project Name</h3>
+            <p>Short description of your project or research article goes here.</p>
+        </a>
+        <a href="#" class="card">
+            <h3>Science Blog</h3>
+            <p>Thoughts on the latest tech trends and scientific discoveries.</p>
+        </a>
     </div>
 
+    <h2>Connect</h2>
     <div class="socials">
-        <a href="https://t.me/your_nick" class="social-link">Telegram</a>
-        <a href="https://instagram.com/your_nick" class="social-link">Instagram</a>
-        <a href="mailto:your-email@gmail.com" class="social-link">Email</a>
+        <a href="https://t.me/your_nick" class="social-link">TELEGRAM</a>
+        <a href="https://instagram.com/your_nick" class="social-link">INSTAGRAM</a>
+        <a href="mailto:your-email@gmail.com" class="social-link">EMAIL</a>
     </div>
 
     <footer>
-        DESIGNED FOR THE FUTURE / 2026
+        OLENA // 2026 // DIGITAL SPACE
     </footer>
 </div>
 
