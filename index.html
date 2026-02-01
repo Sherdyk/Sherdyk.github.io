@@ -3,144 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olena | Portfolio</title>
+    <title>Olena | Dev Journey</title>
     <style>
-        /* Базові налаштування */
         :root {
-            --acid-color: #ccff00; /* Той самий кислотний жовто-зелений */
-            --bg-dark: #0a0a0a;
-            --bg-gray: #1a1a1a;
+            --neon-color: #ccff00; /* Кислотний жовто-зелений */
+            --glow-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00, 0 0 40px #ccff00;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
             color: #ffffff;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Ефект шуму та градієнту на фоні */
+        /* ЕФЕКТ ШУМУ */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-gray) 100%);
-            z-index: -2;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Resolution_Noise.png");
-            opacity: 0.04; /* Ледь помітний шум */
+            background: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>');
             pointer-events: none;
-            z-index: -1;
-            animation: noise-anim 0.2s infinite;
-        }
-
-        @keyframes noise-anim {
-            0% { transform: translate(0,0); }
-            10% { transform: translate(-1%, -1%); }
-            20% { transform: translate(1%, 1%); }
-            30% { transform: translate(-2%, 0); }
-            100% { transform: translate(0,0); }
+            z-index: 10;
         }
 
         .container {
             max-width: 700px;
             margin: 0 auto;
-            padding: 100px 20px;
+            padding: 80px 25px;
+            position: relative;
+            z-index: 20;
         }
 
+        /* НЕОНОВЕ ІМ'Я */
         h1 {
-            font-size: 3.5rem;
-            color: var(--acid-color);
-            margin-bottom: 20px;
-            letter-spacing: -2px;
+            font-size: 4rem;
+            color: var(--neon-color);
+            text-shadow: var(--glow-shadow);
+            margin: 0;
+            letter-spacing: 5px;
             text-transform: uppercase;
         }
 
         .intro {
-            font-size: 1.4rem;
-            line-height: 1.5;
-            margin-bottom: 40px;
-            font-weight: 300;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin: 30px 0;
+            color: #eee;
         }
 
         .highlight {
-            color: var(--acid-color);
-            font-weight: bold;
+            color: var(--neon-color);
+            text-shadow: 0 0 5px var(--neon-color);
         }
 
-        .details {
-            font-size: 1.1rem;
-            color: #cccccc;
-            line-height: 1.8;
-            border-left: 2px solid var(--acid-color);
-            padding-left: 20px;
-            margin-bottom: 60px;
+        .hobbies {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--neon-color);
+            padding: 20px;
+            margin-bottom: 50px;
+            box-shadow: -5px 0 15px rgba(204, 255, 0, 0.1);
         }
 
-        /* Соцмережі */
+        /* НЕОНОВІ КНОПКИ */
         .socials {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         .social-link {
-            color: #ffffff;
+            color: var(--neon-color);
             text-decoration: none;
-            font-size: 0.9rem;
+            padding: 12px 25px;
+            border: 1px solid var(--neon-color);
             text-transform: uppercase;
+            font-size: 0.8rem;
             letter-spacing: 2px;
-            padding: 10px 20px;
-            border: 1px solid #333;
-            transition: 0.3s;
+            transition: 0.4s;
+            box-shadow: inset 0 0 5px rgba(204, 255, 0, 0.2), 0 0 5px rgba(204, 255, 0, 0.2);
         }
 
         .social-link:hover {
-            border-color: var(--acid-color);
-            color: var(--acid-color);
-            box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
-            transform: translateY(-3px);
+            background: var(--neon-color);
+            color: #000;
+            box-shadow: var(--glow-shadow);
+            transform: scale(1.05);
         }
 
         footer {
-            margin-top: 100px;
-            font-size: 0.8rem;
+            margin-top: 80px;
             color: #444;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>Olena</h1>
+    <h1>OLENA</h1>
     
     <div class="intro">
-        Hi! My name is Olena. I am 15 years old and I am deeply interested in <span class="highlight">technology</span>. My goal is to build a strong foundation now to become a <span class="highlight">software engineer</span> in the future.
+        Hi! I'm <span class="highlight">15 years old</span>. I'm focusing on tech and programming to build a strong foundation for my future career. I want to become a <span class="highlight">professional software engineer</span>.
     </div>
 
-    <div class="details">
-        Outside of coding, I stay active through volleyball, badminton, and basketball. 
-        I enjoy challenges like solving the Rubik's cube or playing the guitar. 
-        I'm also an avid reader, exploring everything from detective stories and sci-fi to popular science.
+    <div class="hobbies">
+        I'm active in sports like <span class="highlight">volleyball, badminton, and basketball</span>. 
+        I can solve the Rubik's Cube, play the guitar, and I'm a huge fan of reading — from gripping sci-fi and detectives to popular science.
     </div>
 
     <div class="socials">
-        <a href="https://t.me/YOUR_NICK" class="social-link">Telegram</a>
-        <a href="https://instagram.com/YOUR_NICK" class="social-link">Instagram</a>
+        <a href="https://t.me/your_nick" class="social-link">Telegram</a>
+        <a href="https://instagram.com/your_nick" class="social-link">Instagram</a>
         <a href="mailto:your-email@gmail.com" class="social-link">Email</a>
     </div>
 
     <footer>
-        © 2026 / FUTURE DEVELOPER
+        DESIGNED FOR THE FUTURE / 2026
     </footer>
 </div>
 
