@@ -6,8 +6,8 @@
     <title>Personal Page | Who I am?</title>
     <style>
         :root {
-            --neon-color: #ccff00; /* Кислотний неон */
-            --glow-shadow: 0 0 10px #ccff00, 0 0 20px #ccff00;
+            --neon-color: #ccff00; 
+            --glow-shadow: 0 0 10px rgba(204, 255, 0, 0.6);
         }
 
         body, html {
@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* ЕФЕКТ ШУМУ */
+        /* ЗАГАЛЬНИЙ ЕФЕКТ ШУМУ НА ФОНІ */
         body::before {
             content: "";
             position: fixed;
@@ -38,82 +38,47 @@
             z-index: 20;
         }
 
-        /* ТЕКСТОВИЙ БЛОК */
         .intro {
             font-size: 1.25rem;
             margin-bottom: 50px;
             font-weight: 300;
         }
 
-        /* ОСНОВНА ЗМІНА: КЛАС ДЛЯ ГЛІЧ-ЕФЕКТУ */
-        .glitch-text {
+        /* НОВИЙ СТАТИЧНИЙ НЕОН З ПОЛОСКАМИ */
+        .neon-static {
             color: var(--neon-color);
             text-shadow: var(--glow-shadow);
             font-weight: 600;
-            position: relative; /* Важливо для ефекту */
-            display: inline-block; /* Щоб ефект поширювався тільки на текст */
-            animation: glitch-anim 2.5s infinite linear alternate-reverse; /* Анімація */
+            position: relative;
+            display: inline;
+            /* Ефект полосок через лінійний градієнт */
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
-        /* АНІМАЦІЯ ГЛІЧУ */
-        @keyframes glitch-anim {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(-2px, -2px); }
-            60% { transform: translate(2px, 2px); }
-            80% { transform: translate(2px, -2px); }
-            100% { transform: translate(0); }
-        }
-
-        .glitch-text::before,
-        .glitch-text::after {
-            content: attr(data-text); /* Повторюємо текст */
+        /* Додаткові раритетні лінії поверх неонового тексту */
+        .neon-static::after {
+            content: attr(data-text);
             position: absolute;
-            top: 0; left: 0;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%); /* Перекриваємо фоном */
-            color: var(--neon-color);
-            overflow: hidden;
-            clip: rect(0,0,0,0); /* Приховуємо за замовчуванням */
-            text-shadow: var(--glow-shadow);
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 1px,
+                rgba(0, 0, 0, 0.4) 2px,
+                rgba(0, 0, 0, 0.4) 3px
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
         }
 
-        .glitch-text::before {
-            left: 2px; /* Зміщення для ефекту */
-            text-shadow: -2px 0 var(--neon-color);
-            animation: glitch-anim-before 1.5s infinite linear alternate-reverse;
-        }
-
-        .glitch-text::after {
-            left: -2px; /* Зміщення для ефекту */
-            text-shadow: -2px 0 var(--neon-color);
-            animation: glitch-anim-after 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-anim-before {
-            0% { clip: rect(0, 9999px, 0, 0); }
-            15% { clip: rect(40px, 9999px, 20px, 0); } /* Полоски */
-            30% { clip: rect(80px, 9999px, 60px, 0); }
-            45% { clip: rect(120px, 9999px, 100px, 0); }
-            60% { clip: rect(160px, 9999px, 140px, 0); }
-            75% { clip: rect(200px, 9999px, 180px, 0); }
-            100% { clip: rect(0, 9999px, 0, 0); }
-        }
-
-        @keyframes glitch-anim-after {
-            0% { clip: rect(0, 9999px, 0, 0); }
-            10% { clip: rect(20px, 9999px, 0, 0); } /* Інші полоски */
-            25% { clip: rect(60px, 9999px, 40px, 0); }
-            40% { clip: rect(100px, 9999px, 80px, 0); }
-            55% { clip: rect(140px, 9999px, 120px, 0); }
-            70% { clip: rect(180px, 9999px, 160px, 0); }
-            85% { clip: rect(220px, 9999px, 200px, 0); }
-            100% { clip: rect(0, 9999px, 0, 0); }
-        }
-
-
-        /* РОЗДІЛ ПРОЄКТІВ ТА СТАТЕЙ */
         h2 {
             font-size: 1rem;
             text-transform: uppercase;
@@ -160,7 +125,6 @@
             margin: 0;
         }
 
-        /* СОЦМЕРЕЖІ */
         .socials {
             display: flex;
             gap: 15px;
@@ -195,7 +159,7 @@
 
 <div class="container">
     <div class="intro">
-        Hi! My name is <span class="glitch-text" data-text="Olena">Olena</span>. I'm 15 years and I'm intersted to developing my skills in technology to pursue a career as a <span class="glitch-text" data-text="software engineer">software engineer</span>. 
+        Hi! My name is <span class="neon-static" data-text="Olena">Olena</span>. I'm 15 years old and I'm interested in developing my skills in technology to pursue a career as a <span class="neon-static" data-text="software engineer">software engineer</span>. 
         I stay active with volleyball, badminton, and basketball. I also enjoy solving the Rubik's cube, playing the guitar. I like reading books from detective to science-fiction.
     </div>
 
@@ -217,7 +181,7 @@
         <a href="https://instagram.com/olengwwst" class="social-link">INSTAGRAM</a>
         <a href="mailto:prisaznukolenka5@gmail.com" class="social-link">EMAIL</a>
         <a href="https://www.snapchat.com/add/olengwwst?share_id=jqyWVYOQ5RQ&locale=en-GB" class="social-link">SNAPCHAT</a>
-        <a href="https://www.notion.so/All-about-me-2fa4274e9be0805196a4ffbc878e4466?source=copy_link" class="social-link">MORE ABOUT ME</a>
+        <a href="https://www.notion.so/All-about-me-2fa4274e9be0805196a4ffbc878e4466" class="social-link">MORE ABOUT ME</a>
     </div>
 
     <footer>
